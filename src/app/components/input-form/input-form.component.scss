@@ -1,0 +1,31 @@
+
+.btn-submit{
+    background-color: #F6BC2A;
+    text-transform: uppercase;
+    opacity: 1;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 7px 30px;
+    border-radius: 6px;
+    border: 1px solid #F6BC2A;
+    cursor: pointer;
+}
+.btn-submit:hover{
+    background-color: #fff;
+}
+.btn-clear{
+    color: #635996;
+    background-color: #FFFFFF;
+    opacity: 1;
+    text-transform: uppercase;
+    border: 1px solid #635996;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 6px 24px;
+    cursor: pointer;
+}
+.btn-clear:hover{
+color:#fff;
+background-color: #635996;
+}

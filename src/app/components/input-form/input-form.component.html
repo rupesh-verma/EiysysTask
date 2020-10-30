@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+    
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-12">
+            <div class="card p-3 bg-card">
+                <form [formGroup]="demoForm">
+                    <div class="row">
+                        <div class="col-12 col-md-4 pt-2">
+                            <div class="form-group">
+                                <label for="firstName">First Name*</label>
+                                <input type="text" id="firstName" class="form-control" formControlName="firstName">
+                                <div class="text-danger fs-12" *ngIf="demoForm.get('firstName').errors && demoForm.get('firstName').errors.required && demoForm.get('firstName').touched" >
+                                    Please Enter the First Name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 pt-2">
+                            <div class="form-group">
+                                <label for="lastName">Last Name*</label>
+                                <input type="text" id="lastName" class="form-control" formControlName="lastName">
+                                <div class="text-danger fs-12"
+                                    *ngIf="demoForm.get('lastName').errors && demoForm.get('lastName').errors.required && demoForm.get('lastName').touched">
+                                    Please Enter the Last Name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 pt-2">
+                            <div class="form-group">
+                                <label for="gender">Gender*</label>
+                                <input type="text" id="gender" class="form-control" formControlName="gender">
+                                <div class="text-danger fs-12"
+                                    *ngIf="demoForm.get('gender').errors && demoForm.get('gender').errors.required && demoForm.get('gender').touched">
+                                    Please Enter Gender
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-md-4 pt-2">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <input type="text" minlength="10" maxlength="10" id="mobile" class="form-control" formControlName="mobile"
+                                 oninput="this.value=this.value.replace(/[^0-9()+-]/g,'')">
+                                <div class="text-danger fs-12"
+                                    *ngIf="demoForm.get('mobile').errors && demoForm.get('mobile').errors.minlength && demoForm.get('mobile').touched">
+                                    Invalid Mobile Number
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 pt-2">
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="text" id="email" class="form-control" formControlName="email">
+                                <div class="text-danger fs-12"
+                                    *ngIf="demoForm.get('email').errors && demoForm.get('email').touched">
+                                   <span *ngIf="demoForm.get('email').errors.required" > Please Enter Email-Id</span>
+                                   <span *ngIf="demoForm.get('email').errors.pattern"> Invalid Email-Id</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 pt-2">
+                            <div class="form-group">
+                                <label for="accountNo">Account No</label>
+                                <input type="text" id="accountNo" class="form-control" formControlName="accountNo" 
+                                oninput="this.value=this.value.replace(/[^0-9()+-]/g,'')">
+                                <div class="text-danger fs-12"
+                                    *ngIf="demoForm.get('accountNo').errors && demoForm.get('accountNo').errors.required && demoForm.get('accountNo').touched">
+                                    Please Enter Account Number
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 col-md-4 pt-2">
+                            <div class="form-group">
+                                <label for="ifscCode">IFSC Code*</label>
+                                <input type="text" id="ifscCode" class="form-control" formControlName="ifscCode">
+                                <div class="text-danger fs-12"
+                                    *ngIf="demoForm.get('ifscCode').errors && demoForm.get('ifscCode').errors.required && demoForm.get('ifscCode').touched">
+                                    Please Enter IFSC Code
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8 pt-2">
+                            <div class="form-group">
+                                <label for="note">Note</label>
+                                <textarea class="form-control" id="note" rows="1" formControlName="note"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <button class="btn-clear" (click)="clearForm()">Clear</button>
+                            <button class="btn-submit ml-2" (click)="saveFormData()">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

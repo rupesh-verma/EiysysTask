@@ -1,0 +1,129 @@
+<div class="container">
+    <div class="card bg-card">
+        <div class="row">
+            <div class="col-12 text-right pr-4 pt-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Branch</mat-label>
+                    <mat-select (selectionChange)="changeBranchHandler($event.value)" [(value)]="selectedBranch"
+                        MatFormFieldControl>
+                        <mat-option> --Select--</mat-option>
+                        <mat-option [value]="option" *ngFor="let option of ddlOptions">{{option}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="ml-3" >
+                    <mat-label>Filter</mat-label>
+                    <input matInput placeholder="Address, branch or city" [(ngModel)]="filterKeys">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+
+                        <thead>
+                            <tr>
+                                <th>Bank Name</th>
+                                <th>Branch</th>
+                                <th>IFSC Code</th>
+                                <th>Bank ID</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>District</th>
+                                <th>State</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let bank of currentPageBranchList | filter:filterKeys" (click)="showDescription(bank,descDialog)" matTooltip="Click to see Branch details">
+                                <td>{{bank.bankName}}</td>
+                                <td>{{bank.branch}}</td>
+                                <td>{{bank.ifsc}}</td>
+                                <td>{{bank.bankId}}</td>
+                                <td>{{bank.address}}</td>
+                                <td>{{bank.city}}</td>
+                                <td>{{bank.district}}</td>
+                                <td>{{bank.state}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 pr-4">
+                <app-custom-pagination *ngIf="totalBranchCount" [totalRecords]="totalBranchCount"
+                    [recordsPerPage]="recordsPerPage" (loadPage)="loadPageData($event)"
+                    [activePageNo]="currentPageIndex">
+                </app-custom-pagination>
+            </div>
+        </div>
+    </div>
+
+</div>
+<ng-template #descDialog>
+    <div class="row">
+        <div class="col-11">
+            <h1 mat-dialog-title>Branch Details</h1>
+        </div>
+        <div class="col-1">
+            <div mat-dialog-actions class="text-right">
+                <button mat-button mat-dialog-close>&times;</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div mat-dialog-content class="branch-desc">
+        <div class="mt-2">
+            <div class="name">
+                <span>Bank Name</span>
+            </div>
+            <div class="desc">{{branchDetails.bankName}}</div>
+        </div>
+        <div class="mt-2">
+            <div class="name">
+                <span>Branch</span>
+            </div>
+            <div class="desc">{{branchDetails.branch}}</div>
+        </div>
+        <div class="mt-2">
+            <div class="name">
+                <span>IFSC Code</span>
+            </div>
+            <div class="desc">{{branchDetails.ifsc}}</div>
+        </div>
+        <div class="mt-2">
+            <div class="name">
+                <span>Bank ID</span>
+            </div>
+            <div class="desc">{{branchDetails.bankId}}</div>
+        </div>
+        <div class="mt-2">
+            <div class="name">
+                <span>Address</span>
+            </div>
+            <div class="desc">{{branchDetails.address}}</div>
+        </div>
+        <div class="mt-2">
+            <div class="name">
+                <span>City</span>
+            </div>
+            <div class="desc">{{branchDetails.city}}</div>
+        </div>
+        <div class="mt-2">
+            <div class="name">
+                <span>District</span>
+            </div>
+            <div class="desc">{{branchDetails.district}}</div>
+        </div>
+        <div class="mt-2">
+            <div class="name">
+                <span>State</span>
+            </div>
+            <div class="desc">{{branchDetails.state}}</div>
+        </div>
+
+    </div>
+</ng-template>
